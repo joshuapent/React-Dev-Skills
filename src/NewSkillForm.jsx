@@ -1,7 +1,7 @@
 import './App.css';
 import './NewSkillForm.css'
 
-function NewSkillForm() {
+function NewSkillForm({handleAddSkill}) {
     return (
       <form action="" className="NewSkillForm">
           <label htmlFor="Skill">Skill</label>
