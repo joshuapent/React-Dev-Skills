@@ -21,7 +21,7 @@ function App() {
       <h1 className='teal-text'>React Dev Skills</h1>
       <SkillList skills={skills}/>
       <hr/>
-      <NewSkillForm/>
+      <NewSkillForm handleAddSkill={handleAddSkill}/>
     </div>
   );
 }
