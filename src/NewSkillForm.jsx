@@ -4,39 +4,43 @@ import {useState} from 'react';
 
 function NewSkillForm(props) {
 
-    const [newSkill, setNewSkill] = useState({name: "", level: 3});
+    const [newSkill, setNewSkill] = useState("");
 
-    function handleChange(e) {
-      setNewSkill(e.target.value)
+    function handleChange(evt) {
+      setNewSkill(evt.target.value)
     }
 
-    function handleAdd(e) {
-      e.preventDefault()
-      props.handleAddSkill(newSkill)
+    function handleAdd(evt) {
+      evt.preventDefault()
+      props.handleAddSkill({level: evt.target.Level.value, name: evt.target.Skill.value})
       setNewSkill("");
+
     }
 
     return (
-      <form className="NewSkillForm" onSubmit={handleAdd}>
-          <label htmlFor="Skill">Skill</label>
-          <input 
-            type="text"
-            placeholder="New Skill"
-            value={newSkill}
-            onChange={handleChange}
-            required
-            pattern=".{4,}"
-          />
-          <label htmlFor="Level" value="">Level</label>
-          <select name="Level" id="">
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-              <option value={4}>4</option>
-              <option value={5}>5</option>
-          </select>
-          <button type="submit">ADD SKILL</button>
-      </form>
+      <div>
+        <form className="NewSkillForm" onSubmit={handleAdd}>
+            <label htmlFor="Skill">Skill</label>
+            <input 
+              name="Skill"
+              type="text"
+              placeholder="New Skill"
+              value={newSkill}
+              onChange={handleChange}
+              required
+              pattern=".{3,}"
+            />
+            <label htmlFor="Level" value="">Level</label>
+            <select name="Level" id="">
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+            </select>
+            <button type="submit">ADD SKILL</button>
+        </form>
+      </div>
     );
   }
   
